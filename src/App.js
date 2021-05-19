@@ -1,24 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import MovieList from "./MovieList";
+import Nav from "./Nav";
+//import the provider where this wrapping is because it is the component
+import { MovieProvider } from "./MovieContext";
+import AddMovie from "./AddMovie";
 
+//here we know the Nav and MovieList has access to the data in MovieProvider
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <MovieProvider>
+      <div className="App">
+        {/* wrapping like this: info in movieprovider is available for nav and movielist */}
+        <Nav />
+        <AddMovie />
+        <MovieList />
+      </div>
+    </MovieProvider>
   );
 }
 
